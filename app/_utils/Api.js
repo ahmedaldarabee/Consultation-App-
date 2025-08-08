@@ -5,5 +5,6 @@ const connectAxios = axios.create({
 })
 
 const getCategories = () => connectAxios.get("/categories?populate=*");
+const getDoctors = () => connectAxios.get("/doctor-lists?populate=*");
 
-export default { getCategories }
+export default { getCategories,getDoctors }

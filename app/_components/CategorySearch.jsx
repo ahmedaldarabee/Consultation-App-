@@ -16,7 +16,6 @@ const CategorySearch = () => {
         Api.getCategories()
         .then((res) => {
             setCategoryList(res.data.data);
-            console.log('data be as:',res.data.data);
         })
         .catch((error) => {
             console.log('error message: ',error.message);
