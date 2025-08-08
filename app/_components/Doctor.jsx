@@ -1,7 +1,6 @@
 import Image from "next/image"
 
 const Doctor = ({doctorList}) => {
-    console.log(doctorList);
     return (
         <div className="w-full my-10 flex justify-center flex-col gap-4">
             <h2 className="font-semibold text-4xl  text-center"> <span className="text-lime-600">Doctor</span> List </h2>
@@ -22,7 +21,9 @@ const Doctor = ({doctorList}) => {
                             <h2> <span className="text-lime-600">Experience Year: </span> {doctor?.yearOFExperience}</h2>
                             <h2> <span className="text-lime-600">Phone: </span> {doctor?.phone}</h2>
                             <h2> <span className="text-lime-600">Location: </span> {doctor?.address}</h2>
-                            <h2> <span className="text-lime-600">Specialist: </span> {doctor?.about}</h2>
+                        </div>
+                        <div className="flex items-baseline my-4">
+                            <h2 className="capitalize hover:text-white hover:border-0 px-4 border-2 border-lime-800 py-2 hover:bg-lime-600 transition-all duration-300 cursor-pointer">book now</h2>
                         </div>
                     </div>
                 ))}
