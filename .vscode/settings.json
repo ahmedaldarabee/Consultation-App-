@@ -1,0 +1,12 @@
+{
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact",
+        "typescript": "typescriptreact"
+    },
+    "cSpell.words": [
+        "appointmentlogo",
+        "Darabee",
+        "Nayel"
+    ]
+
+}

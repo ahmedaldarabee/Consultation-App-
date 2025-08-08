@@ -1,11 +1,11 @@
-import { Button } from "@/components/ui/button";
+import CategorySearch from "./_components/CategorySearch";
+import Hero from "./_components/Hero";
 
 export default function Home() {
   return (
-    <div className="w-full min-h-screen flex justify-center items-center">
-      <Button className="cursor-pointer">
-        Click me
-      </Button>
+    <div>
+        <Hero />
+        <CategorySearch />
     </div>
   );
 }
