@@ -2,7 +2,7 @@ import { Outfit } from "next/font/google";
 import "./globals.css";
 import Header from "./_components/Header";
 import Footer from "./_components/Footer";
-
+import { Toaster } from "@/components/ui/sonner"
 
 const outfit = Outfit({
   variable: "--font-geist-sans",
@@ -38,6 +38,7 @@ export default function RootLayout({ children }) {
         <div className="md:px-20">
           <Header />
           {children}
+          <Toaster position="bottom-right" />
           <Footer />
         </div>
       </body>

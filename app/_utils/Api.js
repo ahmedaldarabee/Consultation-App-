@@ -19,11 +19,16 @@ const bookAppointment = (data) => {
     return connectAxios.post(`/appointments`,data);
 }
 
+const bookInformation = (email) => {
+    return connectAxios.get(`http://localhost:1337/api/appointments?filters[email][$eq]=${email}&populate[doctor][populate]=image`);
+}
+
 export default { 
     getCategories,
     getDoctors,
     getDoctorByCategory,
     getDoctorById,
     bookAppointment,
-    bookAppointment
+    bookAppointment,
+    bookInformation
 }

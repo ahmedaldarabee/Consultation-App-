@@ -71,7 +71,9 @@ const Header = () => {
                                         <PopoverContent className="w-40 py-2">
                                             <ul className='flex flex-col gap-4 cursor-pointer'>
                                                 <li className='hover:underline' >My profile</li>
-                                                <li className='hover:underline' >My booking</li>
+                                                <Link
+                                                    href={`/Booking`}
+                                                    className='hover:underline' >My booking</Link>
                                                 <li className='hover:underline' > <LogoutLink>Log out</LogoutLink> </li>
                                             </ul>
                                         </PopoverContent>

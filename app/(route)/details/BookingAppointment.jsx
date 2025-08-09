@@ -13,16 +13,47 @@ import {
 
 import { Calendar } from "@/components/ui/calendar"
 import { Button } from '@/components/ui/button'
+import { useKindeBrowserClient } from '@kinde-oss/kinde-auth-nextjs'
+import Api from '@/app/_utils/Api'
+import { toast } from "sonner"
 
-const BookingAppointment = () => {
+const BookingAppointment = ({doctor}) => {
 
     const [date,setDate] = useState(new Date());
     const [ timeSlot , setTimeSlot ] = useState();
     const [selectedTime,setSelectedTime] = useState();
 
+    const { user } = useKindeBrowserClient();
+
+    // bookAppointment
     useEffect(() => {
         getTime();
-    },[])
+    },[]);
+
+    const booking = () => {
+        const data = {
+            // userName [ fields in strapi that required data from user that login]
+            data: {
+                userName: user.given_name + " " + user.family_name,
+                email:user.email,
+                date:date,
+                time:selectedTime,
+                doctor:doctor.documentId,
+            }
+        }
+
+        Api.bookAppointment(data)
+        .then((res) => {
+            if(res){
+                console.log('success response: ',res);
+                toast.success('Your appointment sent successfully');
+            }
+        }).catch((error) => {
+            console.log('error in booking:\n',error.message)
+            toast.error('Sorry, there is an error in request, please try again later!')
+        })
+
+    }
 
     const getTime = () => {
         const timeList = [];
@@ -58,7 +89,6 @@ const BookingAppointment = () => {
         today.setHours(0, 0, 0, 0); // تصفير الوقت
         return day < today;
     };
-
 
     return (
         <Dialog>
@@ -96,7 +126,9 @@ const BookingAppointment = () => {
                     </div>
                     
                     <DialogDescription className="w-full mt-2">
-                        <Button disabled={ !(date && selectedTime)} className="w-full cursor-pointer capitalize">booking now</Button>
+                        <Button 
+                        onClick={() =>booking()}
+                        disabled={ !(date && selectedTime)} className="w-full cursor-pointer capitalize">booking now</Button>
                     </DialogDescription>
                 </DialogHeader>
             </DialogContent>

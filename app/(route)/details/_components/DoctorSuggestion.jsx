@@ -25,7 +25,7 @@ const DoctorSuggestion = () => {
         <div className="flex flex-col gap-5  items-center justify-center">
             <h2 className="font-semibold">Suggestions for you</h2>
             <div className="">
-                {doctorList?.slice(0,5).map((doctor,idx) => (
+                {doctorList?.slice(0,1).map((doctor,idx) => (
                     <Link key={idx} href={`/details/${doctor?.documentId}`}>
                         <div className="border-2 rounded-lg p-3 m-3 hover:scale-105 hover:shadow-md transition-all cursor-pointer duration-300">
                             <Image 

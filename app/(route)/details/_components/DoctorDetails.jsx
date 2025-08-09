@@ -35,7 +35,7 @@ function DoctorDetails({doctor}) {
                     {doctor?.category?.name}
                 </h2>
 
-                <BookingAppointment />
+                <BookingAppointment doctor={doctor}/>
 
                 <div>
                     <h1 className='text-[25px] font-bold'>About</h1>
