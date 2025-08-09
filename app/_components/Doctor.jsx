@@ -9,7 +9,7 @@ const Doctor = ({doctorList,heading="Popular"}) => {
             </h2>
             
             <div className="grid grid-col-1 md:grid-cols-3 p-3">
-                {doctorList?.map((doctor,idx) => (
+                {doctorList?.length > 0 ? doctorList?.map((doctor,idx) => (
                     <Link key={idx} href={`/details/${doctor?.documentId}`}>
                         <div className="border-2 rounded-lg p-3 m-3 hover:scale-105 hover:shadow-md transition-all cursor-pointer duration-300">
                             <Image 
@@ -31,7 +31,15 @@ const Doctor = ({doctorList,heading="Popular"}) => {
                             </div>
                         </div>
                     </Link>
-                ))}
+                )):
+                    Array(9).fill(0).map((item,idx) => {
+                    <div
+                        key={idx}
+                        className=" animate-pulse h-[250px] w-[250px] bg-lime-200 m-10">
+                        loading please wait...
+                    </div>
+                    })
+                }
             </div>
         </div>
     )
