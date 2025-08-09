@@ -1,11 +1,14 @@
 import Image from "next/image"
 
-const Doctor = ({doctorList}) => {
+const Doctor = ({doctorList,heading="Popular"}) => {
     return (
         <div className="w-full my-10 flex justify-center flex-col gap-4">
-            <h2 className="font-semibold text-4xl  text-center"> <span className="text-lime-600">Doctor</span> List </h2>
+            <h2 className="font-semibold text-4xl  text-center">
+                <span className="text-lime-600"> {heading} </span> Doctor
+            </h2>
+            
             <div className="grid grid-col-1 md:grid-cols-3 p-3">
-                {doctorList.map((doctor,idx) => (
+                {doctorList?.map((doctor,idx) => (
                     <div key={idx} 
                         className="border-2 rounded-lg p-3 m-3 hover:scale-105 hover:shadow-md transition-all cursor-pointer duration-300">
                         <Image 
@@ -14,6 +17,7 @@ const Doctor = ({doctorList}) => {
                             width={500}
                             height={200}
                             className="h-[200px] w-full object-cover"
+                            style={{ height: "auto" }}
                         />
                         <div className="flex items-baseline flex-col gap-4 mt-5  ">
                             <h2 className="cursor-pointer hover:text-lime-800 transition-all duration-300 rounded-full py-2 px-4 bg-lime-200 text-lime-600">{doctor?.category?.name}</h2>

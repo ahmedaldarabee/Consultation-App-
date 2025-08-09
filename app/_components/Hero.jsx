@@ -14,8 +14,8 @@ const Hero = () => {
                             <p className="mt-4 text-gray-700">
                                 Search, compare, and book appointments with top doctors anytime, anywhere.Access quality healthcare from the comfort of your home.
                             </p>
-                            <Button className="mt-5">Explore Now</Button>
 
+                            <Button className="mt-5">Explore Now</Button>
                         </div>
                     </div>
 
@@ -23,7 +23,7 @@ const Hero = () => {
                         <img
                             src="/assets/hero.png"
                             className="rounded"
-                            alt=""
+                            alt="doctor image"
                         />
                     </div>
                 </div>

@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input"
 import { useEffect, useState } from "react"
 import Api from "../_utils/Api"
 import Image from "next/image"
+import Link from "next/link"
 
 const CategorySearch = () => {
     const [categoryList, setCategoryList] = useState([]);
@@ -33,16 +34,19 @@ const CategorySearch = () => {
 
             <div className="my-10 grid sm:grid-cols-1 md:grid-cols-3 ">
                 {categoryList.map((category,idx) => (
-                    <div key={idx} className="flex flex-col p-5 text-center items-center gap-4 rounded-lg bg-lime-200 m-2 hover:scale-110 duration-500 hover:rotate-3 hover:border hover:border-black transition-all ease-in-out  cursor-pointer">
+                    <Link
+                    href={`/search/${category.name}`}
+                    key={idx} className="flex flex-col p-5 text-center items-center gap-4 rounded-lg bg-lime-200 m-2 hover:scale-110 duration-500 hover:rotate-3 hover:border hover:border-black transition-all ease-in-out  cursor-pointer">
                         <Image 
                             src={`http://localhost:1337${category?.icon[0]?.url}`}
                             width={70}
                             height={70}
                             alt={category.name}
                             priority={false}
+                            style={{ height: "auto" }}
                         />
                         <label>{category.name}</label>
-                    </div>
+                    </Link>
                 ))}
             </div>
         </div>
