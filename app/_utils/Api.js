@@ -23,6 +23,10 @@ const bookInformation = (email) => {
     return connectAxios.get(`http://localhost:1337/api/appointments?filters[email][$eq]=${email}&populate[doctor][populate]=image`);
 }
 
+const deleteRequest = (documentId) => {
+    return connectAxios.delete(`/appointments/${documentId}`);
+}
+
 export default { 
     getCategories,
     getDoctors,
@@ -30,5 +34,6 @@ export default {
     getDoctorById,
     bookAppointment,
     bookAppointment,
-    bookInformation
+    bookInformation,
+    deleteRequest
 }

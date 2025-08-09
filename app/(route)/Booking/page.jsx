@@ -26,12 +26,12 @@ const MyBooking = () => {
         user && userBookingList();
     },[user])
 
+    // this method that response to show booking list info after each updating in database
     const userBookingList = () => {
         Api.bookInformation(user?.email)
         
         .then((res) => {
             setBookingList(res.data.data);
-            console.log('booking data info: \n',res.data.data)
         })
         .catch((error)=>{
             console.log(error.message);
@@ -48,10 +48,14 @@ const MyBooking = () => {
                     <TabsTrigger value="Passed">Passed</TabsTrigger>
                 </TabsList>
                 <TabsContent value="UpComing">
-                    <MyBookingList past={false} bookingList={filterBookingList("upcoming")} />
+                    <MyBookingList
+                        updateAppointment={() => userBookingList()}
+                        past={false} bookingList={filterBookingList("upcoming")} />
                 </TabsContent>
                 <TabsContent value="Passed">
-                    <MyBookingList past={true}  bookingList={filterBookingList("past")}/>
+                    <MyBookingList
+                        updateAppointment={() => userBookingList()}
+                        past={true}  bookingList={filterBookingList("past")}/>
                 </TabsContent>
             </Tabs>
         </div>
