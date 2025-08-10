@@ -1,6 +1,5 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useEffect, useState } from "react"
 import Api from "../_utils/Api"
@@ -9,14 +8,13 @@ import Link from "next/link"
 
 const CategorySearch = () => {
     const [categoryList, setCategoryList] = useState([]);
-    const [searchTerm, setSearchTerm] = useState(""); // لتخزين نص البحث
-    const [filteredCategories, setFilteredCategories] = useState([]); // النتيجة بعد الفلترة
+    const [searchTerm, setSearchTerm] = useState(""); 
+    const [filteredCategories, setFilteredCategories] = useState([]);
 
     useEffect(() => {
         getCategoriesData();
     }, []);
 
-    // تحديث الفلترة كل ما searchTerm أو categoryList تغيروا
     useEffect(() => {
         if (searchTerm.trim() === "") {
             setFilteredCategories(categoryList);
@@ -45,7 +43,7 @@ const CategorySearch = () => {
                 <span className="text-lime-600">Search</span> Category
             </h2>
 
-            {/* مربع البحث */}
+            
             <div className="flex max-sm:flex-col md:flex-row items-center w-full max-sm:px-5 md:max-w-sm gap-5">
                 <Input
                     type="text"
@@ -53,21 +51,8 @@ const CategorySearch = () => {
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />
-                <Button
-                    className="cursor-pointer"
-                    onClick={() => {
-                        // لو حبيت تخلي البحث يتم بالزر فقط
-                        const filtered = categoryList.filter(category =>
-                            category.name.toLowerCase().includes(searchTerm.toLowerCase())
-                        );
-                        setFilteredCategories(filtered);
-                    }}
-                >
-                    Search here
-                </Button>
             </div>
 
-            {/* عرض النتائج */}
             <div className="my-10 grid sm:grid-cols-1 md:grid-cols-3">
                 {filteredCategories.length > 0 ? (
                     filteredCategories.map((category, idx) => (
@@ -88,7 +73,7 @@ const CategorySearch = () => {
                         </Link>
                     ))
                 ) : (
-                    <p className="text-gray-500 col-span-full text-center">No categories found</p>
+                    <p className="text-gray-500 w-full text-center">No categories found</p>
                 )}
             </div>
         </div>
